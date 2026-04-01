@@ -1,6 +1,7 @@
 # XFHotWallet - Solana iOS Wallet
 
-![Wallet Interface](./screenshot.png)
+
+<img width="490" height="974" alt="Screenshot 2026-04-02 004329" src="https://github.com/user-attachments/assets/b37a9cef-5f9d-4342-89d5-06052c9a6138" />
 
 An open-source, non-custodial Solana hot wallet built specifically for iOS utilizing the Tauri framework. This repository serves as a secure reference implementation for mobile-first Solana interactions, prioritizing robust key management, sleek UI, and seamless dApp bridging.
 
