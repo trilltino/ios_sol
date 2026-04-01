@@ -1,0 +1,16 @@
+{
+  "name": "mwa-test-dapp",
+  "version": "1.0.0",
+  "description": "Desktop test dApp for XFHotWallet MWA integration",
+  "type": "module",
+  "scripts": {
+    "test": "node simulate_dapp.mjs",
+    "test:auth": "node simulate_dapp.mjs --auth-only",
+    "test:sign": "node simulate_dapp.mjs --sign"
+  },
+  "dependencies": {
+    "@solana-mobile/mobile-wallet-adapter-protocol": "file:../../reference/mobile-wallet-adapter/js/packages/mobile-wallet-adapter-protocol",
+    "@solana/web3.js": "^1.95.4",
+    "ws": "^8.18.0"
+  }
+}

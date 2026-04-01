@@ -1,0 +1,10 @@
+{
+  "name": "solana-ios-hot-wallet",
+  "private": true,
+  "scripts": {
+    "dev": "npm run tauri dev --prefix crates/ios-app",
+    "build": "npm run build --prefix crates/ios-app",
+    "test:rust": "cargo test",
+    "test:ui": "npm test --prefix crates/ios-app"
+  }
+}

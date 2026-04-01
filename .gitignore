@@ -1,0 +1,8 @@
+/target
+/crates/ios-app/node_modules
+/crates/ios-app/dist
+/crates/ios-app/src-tauri/target
+.env
+*.pem
+*.key
+.DS_Store

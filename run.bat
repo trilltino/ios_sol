@@ -1,0 +1,3 @@
+@echo off
+echo Starting Solana Hot Wallet Development Environment...
+npm run dev
