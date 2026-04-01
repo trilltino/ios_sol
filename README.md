@@ -26,16 +26,35 @@ A highly responsive mobile-focused frontend built over Tauri, wrapped in a premi
 *   **MWA dApp Connectivity:** Connect, Authorize, and Sign transactions gracefully with any Mobile Web3 app across the Solana ecosystem using standard ECDH handshakes.
 *   **Biometric Vaults:** Vault encryption with PIN overlay and biometric gating before transactions.
 
-## Development and Building
+## How It Works on iOS & Security Profile
+This wallet is purpose-built to package directly to iOS runtimes utilizing the Tauri `mobile` targets. 
 
-Ensure that you have the standard Rust toolchain (`stable`) and Node.js installed.
+### iOS Security Model:
+1. **Biometric Enclaves:** Leverages `tauri-plugin-biometric` hooked tightly into iOS FaceID/TouchID native prompts to pause all transaction signing until the physical owner is verified.
+2. **Encrypted Vaults:** Utilizes AES-256-GCM encryption with Argon2id Key Derivation. Currently backed by the local file system; architecturally prepared to push bytes directly into the **Apple Secure Enclave** via Keychain APIs for ultimate hardware-level immutability.
+3. **App Sandboxing:** Native WKWebView execution isolates the JavaScript bundle from the Rust layer. The mnemonic seed is held exclusively in Rust-managed memory and never passed exposed to the DOM overlay.
 
-To spin up the local development interface:
+### Deploying to an iOS Device
+Tauri v2 brings native iOS generation natively out-of-the-box:
+1. Initialize the Xcode project: `npm run tauri ios init`
+2. Connect your iPhone or start a Simulator.
+3. Boot the environment natively: `npm run tauri ios dev`
+
+## Development and Building (PC / Desktop)
+
+You can run and test this entire wallet seamlessly on Windows, macOS, or Linux! Ensure you have the standard Rust toolchain (`stable`) and Node.js installed.
+
 1. Navigate to the `crates/ios-app` directory.
 2. Install core Node dependencies via `npm install`.
 3. Run the development environment with `npm run tauri dev`.
+*(A native desktop window will appear simulating the mobile viewport).*
 
-### Testing dApp Interoperability (MWA)
+### Docker Clean-Room Builds
+For developers who want to compile the environment in an entirely clean setup without installing local dependencies, a `Dockerfile` has been included.
+1. Build the image: `docker build -t ios-sol-builder .`
+2. Run the build container: `docker run -v $(pwd)/target:/app/target ios-sol-builder`
+
+### Testing dApp Interoperability (MWA/Desktop Simulation)
 1. Keep the Tauri application running.
 2. Navigate to the root `test-dapp/` directory.
 3. Run `node simulate_dapp.mjs`.
